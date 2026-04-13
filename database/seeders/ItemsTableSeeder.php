@@ -1,0 +1,173 @@
+<?php
+
+namespace Database\Seeders;
+
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+use App\Models\Item;
+
+class ItemsTableSeeder extends Seeder
+{
+    /**
+     * Run the database seeds.
+     */
+    public function run(): void
+    {
+        $items = [
+            [
+            'item_image' => 'clock.jpg',
+            'item_name' => '腕時計',
+            'brand_name' => 'Rolax',
+            'item_price' =>15000,
+            'seller_id' =>1,
+            'item_detail' => 'スタイリッシュなデザインのメンズ腕時計',
+            'category_id' =>1,
+            'condition_id' =>1,
+            'buyer_id' => null,
+            'purchase_address' => null,
+            'purchase_post_code' => null,
+            'purchase_building' => null,
+            'purchased_at' => null
+            ],
+            [
+            'item_image' => 'hdd.jpg',
+            'item_name' => 'HDD',
+            'brand_name' => '西芝',
+            'item_price' =>5000,
+            'seller_id' =>3,
+            'item_detail' => '高性能で信頼性の高いハードディスク',
+            'category_id' =>1,
+            'condition_id' =>2,
+            'buyer_id' => null,
+            'purchase_address' => null,
+            'purchase_post_code' => null,
+            'purchase_building' => null,
+            'purchased_at' => null
+            ],
+            [
+            'item_image' => 'onions.jpg',
+            'item_name' => '玉ねぎ3束',
+            'brand_name' => 'なし',
+            'item_price' =>300,
+            'seller_id' =>2,
+            'item_detail' => '新鮮な玉ねぎの3束セット',
+            'category_id' =>1,
+            'condition_id' =>3,
+            'buyer_id' => null,
+            'purchase_address' => null,
+            'purchase_post_code' => null,
+            'purchase_building' => null,
+            'purchased_at' => null
+            ],
+            [
+            'item_image' => 'shoes.jpg',
+            'item_name' => '革靴',
+            'brand_name' => null,
+            'item_price' =>4000,
+            'seller_id' =>3,
+            'item_detail' => 'クラシックなデザインの革靴',
+            'category_id' =>1,
+            'condition_id' =>4,
+            'buyer_id' => null,
+            'purchase_address' => null,
+            'purchase_post_code' => null,
+            'purchase_building' => null,
+            'purchased_at' => null
+            ],
+            [
+            'item_image' => 'laptop.jpg',
+            'item_name' => 'ノートPC',
+            'brand_name' => null,
+            'item_price' =>45000,
+            'seller_id' =>3,
+            'item_detail' => '高性能なノートパソコン',
+            'category_id' =>1,
+            'condition_id' =>1,
+            'buyer_id' => null,
+            'purchase_address' => null,
+            'purchase_post_code' => null,
+            'purchase_building' => null,
+            'purchased_at' => null
+            ],
+            [
+            'item_image' => 'mic.jpg',
+            'item_name' => 'マイク',
+            'brand_name' => 'なし',
+            'item_price' =>8000,
+            'seller_id' =>1,
+            'item_detail' => '高性能のレコーディング用マイク',
+            'category_id' =>1,
+            'condition_id' =>2,
+            'buyer_id' => null,
+            'purchase_address' => null,
+            'purchase_post_code' => null,
+            'purchase_building' => null,
+            'purchased_at' => null
+            ],
+            [
+            'item_image' => 'bag.jpg',
+            'item_name' => 'ショルダーバッグ',
+            'brand_name' => null,
+            'item_price' =>3500,
+            'seller_id' =>2,
+            'item_detail' => 'おしゃれなショルダーバッグ',
+            'category_id' =>1,
+            'condition_id' =>3,
+            'buyer_id' => null,
+            'purchase_address' => null,
+            'purchase_post_code' => null,
+            'purchase_building' => null,
+            'purchased_at' => null
+            ],
+            [
+            'item_image' => 'tumbler.jpg',
+            'item_name' => 'タンブラー',
+            'brand_name' => 'なし',
+            'item_price' =>500,
+            'seller_id' =>3,
+            'item_detail' => '使いやすいタンブラー',
+            'category_id' =>1,
+            'condition_id' =>4,
+            'buyer_id' => null,
+            'purchase_address' => null,
+            'purchase_post_code' => null,
+            'purchase_building' => null,
+            'purchased_at' => null
+            ],
+            [
+            'item_image' => 'grinder.jpg',
+            'item_name' => 'コーヒーミル',
+            'brand_name' => 'Starbacks',
+            'item_price' =>4000,
+            'seller_id' => 3,
+            'item_detail' => '手動のコーヒーミル',
+            'category_id' =>1,
+            'condition_id' =>2,
+            'buyer_id' => null,
+            'purchase_address' => null,
+            'purchase_post_code' => null,
+            'purchase_building' => null,
+            'purchased_at' => null
+            ],
+            [
+            'item_image' => 'cosmetics.jpg',
+            'item_name' => 'メイクセット',
+            'brand_name' => null,
+            'item_price' =>2500,
+            'seller_id' =>2,
+            'item_detail' => '便利なメイクアップセット',
+            'category_id' =>1,
+            'condition_id' =>2,
+            'buyer_id' => null,
+            'purchase_address' => null,
+            'purchase_post_code' => null,
+            'purchase_building' => null,
+            'purchased_at' => null
+            ],
+    ];
+    
+    DB::table('items')->insert($items);
+
+    }
+}

@@ -1,0 +1,44 @@
+.main__navi-ul {
+    display: flex;
+    list-style: none;
+    color: inherit;
+    border-bottom: solid 1px black;
+    
+}
+
+.main__navi--recommends {
+    text-decoration: none;
+}
+
+.main__navi--likes {
+    text-decoration: none;
+}
+
+.item-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    list-style: none;
+    padding: 0;
+    color: inherit;
+}
+
+.item-card {
+    padding: 10px;
+}
+
+.items-detail-link {
+    text-decoration: none;
+}
+
+/* ここから下はitem_detaill.blade.php対応 */
+.content__inner {
+    display: flex;
+    justify-content: space-between;
+    padding: 50px;
+}
+
+.item-detail__ul {
+    list-style: none;
+}
+

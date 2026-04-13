@@ -1,0 +1,65 @@
+@extends('layout.app')
+@section('css')
+<link rel="stylesheet" href="{{asset('css/mypage.css')}}">
+@endsection
+
+@section('content')
+<div class="profile-form__content">
+    <div class="profile-form__heading">
+        <h2>プロフィール設定</h2>
+    </div>
+    <div class="form__group">
+        <form action="" class="form" method="post" novalidateenctype="multipart/form-data">
+            @csrf
+            <ul class="form__group-ul">
+                <li class="form__group-item">
+                    <div class="form__user-img">
+                        @if(isset($filename))
+                        <img src="{{ asset() }}" style="max-width: 300px;">
+                        @else
+                        <div style="max-width: 300px;"></div>
+                        @endif
+                    </div>
+                    <img src="" alt="">
+                    <input type="file" name="user_image" value="画像を選択">
+                </li>
+                <li class="form__group-item">
+                    <label for="user_name">ユーザー名</label>
+                    <input type="text" id="user_name" name="user_name" value="{{ old('user_name') }}"/>
+                </li>
+                <div class="form__error">
+                   @error('user_name')
+                    {{ $message }}
+                    @enderror
+                </div>
+                <li class="form__group-item">
+                    <label for="post_code">郵便番号</label>
+                    <input type="text" name="post_code" value="{{ old('post_code') }}"/>
+                </li>
+                <div class="form__error">
+                    @error('post_code')
+                    {{ $message }}
+                    @enderror
+                </div>
+                <li class="form__group-item">
+                    <label for="address">住所</label>
+                    <input type="text" name="address" value="{{ old('address') }}"/>
+                </li>
+                 @error('address')
+                    {{ $message }}
+                    @enderror
+                <li class="form__group-item">
+                    <label for="building">建物名</label>
+                    <input type="text" name="building" value="{{ old('building') }}"/>
+                </li>
+                 @error('building')
+                    {{ $message }}
+                    @enderror
+                <li class="form__group-item">
+                    <button class="form__button-submit">更新する</button>
+                </li>
+            </ul>
+        </form>
+    </div>
+</div>
+@endsection
