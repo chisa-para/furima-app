@@ -53,5 +53,14 @@
     <div class="transition-login">
         <a href="/login" class="to-login">ログインはこちら</a>
     </div>
+    @if ($errors->any())
+    　<div style="color: red; border: 1px solid red; padding: 10px;">
+        　<ul>
+           　 @foreach ($errors->all() as $error)
+              　  <li>{{ $error }}</li>
+           　 @endforeach
+        　</ul>
+    　</div>
+　　　@endif
 </div>
 @endsection

@@ -20,7 +20,7 @@ class ProfileFactory extends Factory
     public function definition(): array
     {
         return [
-            'post_code' => $this->faker->postcode,
+            'post_code' => $this->faker->regexify('[0-9]{3}-[0-9]{4}'),
             'address' => $this->faker->prefecture() .
                         $this->faker->city() .
                         $this->faker->streetName() .

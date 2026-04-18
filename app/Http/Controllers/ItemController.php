@@ -4,9 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\User;
 use App\Models\Item;
 use App\Models\Comment;
 use App\Models\Like;
+use App\Models\Category;
+use App\Models\Condition;
 
 class ItemController extends Controller
 {
@@ -23,8 +26,45 @@ class ItemController extends Controller
 
     public function show($id)
     {
-        $item = Item::with(['comments', 'likes'])->findOrFail($id);
+        $item = Item::with(['likes', 'comments.user.profile'])->findOrFail($id);
         
         return view('item_detail', compact('item'));
+    }
+
+    public function exhibit()
+    {
+        $categories=Category::all();
+        $conditions=Condition::all();
+        return view('sell', compact('categories', 'conditions'));
+    }
+
+    public function store(Request $request)
+    {
+        $user = Auth::user();
+        $item = $request;
+        Item::create([
+            'item_image' => $request->item_image,
+            'category_id' => $request->category_id,
+            'condition_id' => $request->condition_id,
+            'item_name' => $request->item_name,
+            'brand_name' => $request->brand_name,
+            'item_detail' => $request->item_detail,
+            'item_price' => $request->item_price,
+            'seller_id' => $user->id,
+        ]);
+        return redirect('/')->with('successMessage','商品を出品しました');
+    }
+
+    public function post($id, Request $request)
+    {
+        $user = Auth::user();
+        
+        Comment::create([
+            'comment_user_id' => $user->id,
+            'item_id' => $id,
+            'comment_detail' => $request->comment_detail,
+        ]);
+
+        return redirect('/item/{$id}')->with('successMessage','コメントを投稿しました');
     }
 }

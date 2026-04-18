@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained('users')->cascadeOnUpdate()->cascadeOnDelete();
             $table->string('profile_image')->nullable();
-            $table->string('post_code',8);
+            $table->string('post_code',8,'regex:/^\d{3}-\d{4}$/');
             $table->string('address');
             $table->string('building')->nullable();
             $table->timestamps();

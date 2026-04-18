@@ -9,7 +9,7 @@
         <div class="main__navi-list">
             <ul class="main__navi-ul">
                 <li class="main__navi-item"><a href="" class="main__navi--recommends">おすすめ</a></li>
-                <li class="main__navi-likes"><a href="" class="main__navi--likes">出品</a></li>
+                <li class="main__navi-likes"><a href="" class="main__navi--likes">マイリスト</a></li>
             </ul>
         </div>
     </div>

@@ -22,10 +22,8 @@ class UsersTableSeeder extends Seeder
             User::factory()->create(['user_name' => '瓜田杉郎', 'email' => 'uritai@example.com', 'password' => Hash::make('100items')]),
         ]);
 
-        collect($users)->each(function ($user){
-            Profile::factory()->count(1)->for($user)->create();
-        });
-
-
+        foreach ($users as $user) {
+            $user->profile()->save(Profile::factory()->make());
+        }
     }
 }

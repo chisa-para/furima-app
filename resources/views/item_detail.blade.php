@@ -24,7 +24,7 @@
                         <p class="comments">{{ $item->comments->count() }}</p>
                     </div>
                 </li>
-                <a href="/purchase/item" class="purchase-process">購入手続きへ</a>
+                <a href="/purchase/{{ $item->id }}" class="purchase-process">購入手続きへ</a>
                 <li class="item-detail__explain">
                     <h3 class="item-detail__explain">商品説明</h3>
                     <p class="item-detail__explain">{{ $item->item_detail }}</p>
@@ -46,14 +46,18 @@
                     <h3 class="detail__comments">コメント({{ $item->comments->count() }})</h3>
                     @foreach($item->comments as $comment)
                     <div class="comment-info">
-                        <div class="img"></div>
-                        <p class="user_name">admin</p>
+                        @if(empty($profile->profile_image))
+                        <div class="user-img">ユーザー画像</div>
+                        @else
+                        <img class="main__item-img" src="{{ asset('storage/images/' . $comment->user->profile->profile_image) }}" width="200" height="200" alt="ユーザー画像">
+                        @endif
+                        <p class="user_name">{{ $comment->user->user_name }}</p>
                     </div>
                     <p class="comment">{{ $comment->comment_detail }}</p>
                     @endforeach
                     <h4 class="detail__send-comment">商品へのコメント</h4>
-                    <form action="">
-                        <input type="text">
+                    <form action="/item/{{ $item->id }}/comment" method="post">
+                        <input name="comment_detail" type="text">
                         <button>コメントを送信する</button>
                     </form>
                 </li>

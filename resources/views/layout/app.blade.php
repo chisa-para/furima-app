@@ -12,7 +12,9 @@
     <header class="header">
         <div class="header__inner">
             <div class="header-logo-group">
-                <img src="{{ asset('images/COACHTECHヘッダーロゴ.png') }}" alt="COACHTECH" class="logo-image">
+                <a href="/" class="header-logo-link">
+                    <img src="{{ asset('images/COACHTECHヘッダーロゴ.png') }}" alt="COACHTECH" class="logo-image">
+                </a>
             </div>
             @if(!Request::is('login','register'))
             <div class="header__search">
@@ -31,10 +33,10 @@
                             </form>
                         </li>
                         @else
-                        <li class="header__navi-item"><a href="" class="header__navi--login">ログイン</a></li>
+                        <li class="header__navi-item"><a href="/login" class="header__navi--login">ログイン</a></li>
                         @endauth
-                        <li class="header__navi-item"><a href="" class="header__navi--mypage">マイページ</a></li>
-                        <li class="header__navi-item"><a href="" class="header__navi--sell">出品</a></li>
+                        <li class="header__navi-item"><a href="/mypage" class="header__navi--mypage">マイページ</a></li>
+                        <li class="header__navi-item"><a href="/sell" class="header__navi--sell">出品</a></li>
                     </ul>
                 </div>
             </div>

@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use Laravel\Fortify\Contracts\RegisterResponse;
+use Laravel\Fortify\Contracts\LoginResponse;
 use App\Actions\Fortify\CreateNewUser;
 use App\Actions\Fortify\ResetUserPassword;
 use App\Actions\Fortify\UpdateUserPassword;
@@ -21,7 +23,12 @@ class FortifyServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+        $this->app->instance(RegisterResponse::class, new class implements RegisterResponse {
+        public function toResponse($request)
+        {
+            return redirect('/mypage/profile'); 
+        }
+        });
     }
 
     /**
@@ -52,5 +59,19 @@ class FortifyServiceProvider extends ServiceProvider
         RateLimiter::for('two-factor', function (Request $request) {
             return Limit::perMinute(5)->by($request->session()->get('login.id'));
         });
+
+        $this->app->instance(RegisterResponse::class, new class implements RegisterResponse {
+        public function toResponse($request)
+        {
+            return redirect('/mypage/profile');
+        }
+        });
+
+        $this->app->instance(LoginResponse::class, new class implements LoginResponse {
+        public function toResponse($request)
+        {
+            return redirect('/'); 
+        }
+    });
     }
 }

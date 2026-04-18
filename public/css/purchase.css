@@ -1,0 +1,16 @@
+.content__inner {
+    display: flex;
+}
+
+.item-detail-info {
+    display: flex;
+    border-bottom: solid 1px black;
+}
+
+.payment-method {
+    border-bottom: solid 1px black;
+}
+
+.shipping-address {
+    border-bottom: solid 1px black;
+}

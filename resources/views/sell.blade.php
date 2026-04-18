@@ -9,7 +9,7 @@
         <h2>商品の出品</h2>
     </div>
     <div class="sell-form__group">
-        <form action="" class="sell-form" method="post" novalidate>
+        <form action="/items" class="sell-form" method="post" novalidate>
             @csrf
             <ul class="sell-item-info__ul">
                 <li class="sell-item-info__img">
@@ -25,9 +25,11 @@
                     商品の詳細
                     <ul class="item-info__detail-ul">
                         <li class="detail__category">
-                            <label>カテゴリー
-                            </label>
-                            <input type="checkbox">
+                            カテゴリー
+                            @foreach($categories as $category)
+                            <input type="checkbox" id="{{ $category->category_content }}" name="category_id"  value="{{ $category->id }}" class="category-hidden">
+                            <label for="{{ $category->category_content }}" class="category-button">{{ $category->category_content }}</label>
+                            @endforeach
                         </li>
                         <div class="form__error">
                             @error('detail__category')
@@ -35,10 +37,11 @@
                             @enderror
                         </div>
                         <li class="detail__condition">
-                            <label>商品の詳細
-                            </label>
-                            <select name="" id="">
-                                <option value="1">新品同様</option>
+                            商品の詳細
+                            <select name="condition_id" id="">
+                                @foreach($conditions as $condition)
+                                <option value="{{ $condition->id }}">{{ $condition->condition_content }}</option>
+                                @endforeach
                             </select>
                         </li>
                         <div class="form__error">
@@ -54,7 +57,7 @@
                         <li class="intro__detail">
                             <label for="item_name">商品名
                             </label>
-                            <input type="text" class="item_name">
+                            <input type="text" name="item_name" class="item_name">
                         </li>
                         <div class="form__error">
                             @error('')
@@ -64,7 +67,7 @@
                         <li class="intro__detail">
                             <label for="item_brand">ブランド名
                             </label>
-                            <input type="text" class="item_brand">
+                            <input type="text" name="brand_name"  class="item_brand">
                         </li>
                         <div class="form__error">
                             @error('')
@@ -74,7 +77,7 @@
                         <li class="intro__detail">
                             <label for="item_detail">商品の説明
                             </label>
-                            <input type="text" class="item_detail">
+                            <input type="text" name="item_detail" class="item_detail">
                         </li>
                         <div class="form__error">
                             @error('')
@@ -84,7 +87,7 @@
                         <li class="intro__detail">
                             <label for="item_price">販売価格
                             </label>
-                            <input type="text" class="item_price">
+                            <input type="text" name="item_price" class="item_price">
                         </li>
                         <div class="form__error">
                             @error('')

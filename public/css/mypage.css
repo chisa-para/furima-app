@@ -1,6 +1,44 @@
-main {
+/* mypdge.blade.php対応 */
+.main__user-info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 100%;
-    height: 100vh;
+    margin: 5%;
+    color: inherit;
+}
+
+.user-img {
+    background-color: rgb(221, 221, 221);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 120px;
+    height: 120px;
+    font-size: 13px;
+    border-radius: 50%;
+}
+
+.main__item-img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.user-name {
+    margin: 0 15% 0 5%;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.profile-edit {
+    text-decoration: none;
+    color: rgb(255, 62, 32);
+    padding: 5px;
+    border: solid 1px rgb(255, 62, 32) ;
+    border-radius: 5%;
+    font-size: 15px;
+    font-weight: bold;
 }
 
 .main__navi-ul {
@@ -19,17 +57,15 @@ main {
     text-decoration: none;
 }
 
-.main__item {
-    background-color: aqua;
-    padding: 10px 15px;
-    width: fit-content;
+.main__items-ul {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    list-style: none;
+    padding: 0;
 }
 
-.item-img {
-    background-color: rgb(177, 177, 177);
-    width: 150px;
-    height: 150px;
-}
+/* mypdge_profile.blade.php対応 */
 
 .profile-form__content {
     display: flex;
