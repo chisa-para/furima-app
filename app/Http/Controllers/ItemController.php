@@ -99,10 +99,8 @@ class ItemController extends Controller
 
     public function search(Request $request)
     {
-        $items = Item::with('category')->KeywordSearch($request->keyword)->GenderSearch($request->gender)->CategorySearch($request->category_id)->DateSearch($request->date)->paginate(7)->withQueryString();
+        $items = Item::select('id','item_name','item_image')->KeywordSearch($request->keyword)->get();
 
-        $categories = Category::all();
-
-        return view('item', compact('categories','contacts'));
+        return view('item', compact('items'));
     }
 }

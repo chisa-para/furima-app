@@ -18,7 +18,7 @@
             </div>
             @if(!Request::is('login','register'))
             <div class="header__search">
-                <form action="/search" class="search-form">
+                <form action="/item/search" class="search-form" method="get">
                     <input name="keyword" type="text" class="search-input" placeholder="何をお探しですか？">
                 </form>
             </div>
