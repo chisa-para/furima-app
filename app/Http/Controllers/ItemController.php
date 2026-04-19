@@ -10,6 +10,7 @@ use App\Models\Comment;
 use App\Models\Like;
 use App\Models\Category;
 use App\Models\Condition;
+use App\Http\Requests\CommentRequest;
 
 class ItemController extends Controller
 {
@@ -30,6 +31,34 @@ class ItemController extends Controller
         
         return view('item_detail', compact('item'));
     }
+
+    public function toggleLike($id)
+    {
+        $user = Auth::user();
+        $item = Item::findOrFail($id);
+
+    // ユーザーがこの商品をいいねしているかチェック
+    // likes()リレーションがある前提です
+    $like = Like::where('like_item_id', $item_id)->where('user_id', $user->id)->first();
+
+    if ($like) {
+        $like->delete();
+        $status = 'unliked';
+    } else {
+        Like::create([
+            'user_id' => $user->id,
+            'like_item_id' => $item_id, // ここを正しいカラム名に合わせる
+        ]);
+        $status = 'liked';
+    }
+
+    $newCount = Like::where('like_item_id', $item_id)->count();
+
+    return response()->json([
+        'status' => $status,
+        'count' => $newCount // 最新の数を数える
+    ]);
+}
 
     public function exhibit()
     {
@@ -55,7 +84,7 @@ class ItemController extends Controller
         return redirect('/')->with('successMessage','商品を出品しました');
     }
 
-    public function post($id, Request $request)
+    public function post($id, CommentRequest $request)
     {
         $user = Auth::user();
         
@@ -65,6 +94,15 @@ class ItemController extends Controller
             'comment_detail' => $request->comment_detail,
         ]);
 
-        return redirect('/item/{$id}')->with('successMessage','コメントを投稿しました');
+        return redirect("/item/{$id}")->with('successMessage','コメントを投稿しました');
+    }
+
+    public function search(Request $request)
+    {
+        $items = Item::with('category')->KeywordSearch($request->keyword)->GenderSearch($request->gender)->CategorySearch($request->category_id)->DateSearch($request->date)->paginate(7)->withQueryString();
+
+        $categories = Category::all();
+
+        return view('item', compact('categories','contacts'));
     }
 }

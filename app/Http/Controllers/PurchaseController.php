@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Item;
+use App\Http\Requests\AddressRequest;
 
 class PurchaseController extends Controller
 {
@@ -21,7 +22,7 @@ class PurchaseController extends Controller
         return view('purchase_address', compact('item'));
     }
 
-    public function store($id, Request $request)
+    public function store($id, AddressRequest $request)
     {
         $item = Item::findorFail($id);
         

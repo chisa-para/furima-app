@@ -25,9 +25,11 @@
                     <label for="password">パスワード</label>
                     <input type="text" id="password" name="password" value="{{ old('password') }}"/>
                 </li>
-                 @error('password')
+                <div class="form__error">
+                    @error('password')
                     {{ $message }}
                     @enderror
+                </div>
                 <li class="form__group-item">
                     <button class="form__button-submit">ログインする</button>
                 </li>

@@ -11,16 +11,6 @@
             {{session('successMessage')}}
         </div>
         @endif
-  
-        @if($errors->any())
-        <div class="todo__alert--danger" style="color: red; backgraucd: rgb(255, 164, 164);">
-            <ul>
-                @foreach($errors->all() as $error)
-                <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-        @endif
     </div>
     <div class="profile-form__heading">
         <h2>プロフィール設定</h2>
@@ -40,6 +30,11 @@
                     <img src="" alt="">
                     <input type="file" name="user_image" value="画像を選択">
                 </li>
+                <div class="form__error">
+                    @error('profile_image')
+                    {{ $message }}
+                    @enderror
+                </div>
                 <li class="form__group-item">
                     <label for="user_name">ユーザー名</label>
                     <input type="text" id="user_name" name="user_name" value="{{ $user->user_name }}"/>
@@ -62,16 +57,15 @@
                     <label for="address">住所</label>
                     <input type="text" name="address" value="{{ $user->profile->address ?? '' }}"/>
                 </li>
-                 @error('address')
+                <div class="form__error">
+                    @error('address')
                     {{ $message }}
                     @enderror
+                </div>
                 <li class="form__group-item">
                     <label for="building">建物名</label>
                     <input type="text" name="building" value="{{ $user->profile->building ?? '' }}"/>
                 </li>
-                 @error('building')
-                    {{ $message }}
-                    @enderror
                 <li class="form__group-item">
                     <button class="form__button-submit">更新する</button>
                 </li>

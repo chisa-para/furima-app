@@ -46,5 +46,14 @@ class Item extends Model
     public function comments(){
     return $this->hasMany(Comment::class);
     }
+
+    public function scopeGenderSearch($query, $keyword)
+    {
+        if (!empty($keyword)) {
+            $query->where('item_name', 'like', '%' . $keyword . '%');
+            }
+            
+        return $query;
+    }
 }
 

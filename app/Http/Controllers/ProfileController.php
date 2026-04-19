@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Item;
+use App\Http\Requests\ProfileRequest;
 
 class ProfileController extends Controller
 {
@@ -34,7 +35,7 @@ class ProfileController extends Controller
         return view('mypage_profile', compact('user', 'profile'));
     }
 
-    public function update(Request $request)
+    public function update(ProfileRequest $request)
     {
         $user = Auth::user();
         $user->profile()->updateOrCreate(

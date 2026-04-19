@@ -18,8 +18,12 @@
                     <p class="item-detail__brand">{{ $item->brand_name }}</p>
                     <p class="item-detail__price">¥{{ $item->item_price }}<span>（税込）</span></p>
                     <div class="item-detail__icons">
-                        <img src="{{ asset('images/ハートロゴ_デフォルト.png') }}"alt="いいね数">
-                        <p class="likes">{{ $item->likes->count() }}</p>
+                        <button class="likes-btn" data-item-id="{{ $item->id }}">
+                            @if($item->is_liked)<img src="{{ asset('images/ハートロゴ_ピンク.png') }}"alt="いいね数">
+                            @else<img src="{{ asset('images/ハートロゴ_デフォルト.png') }}"alt="いいね数">
+                            @endif
+                        </button>
+                        <span class="likes-counts">{{ $item->likes->count() }}</span>
                         <img src="{{ asset('images/ふきだしロゴ.png') }}" alt="コメント数">
                         <p class="comments">{{ $item->comments->count() }}</p>
                     </div>
@@ -58,6 +62,11 @@
                     <h4 class="detail__send-comment">商品へのコメント</h4>
                     <form action="/item/{{ $item->id }}/comment" method="post">
                         <input name="comment_detail" type="text">
+                        <div class="form__error">
+                            @error('comment_detail')
+                            {{ $message }}
+                            @enderror
+                        </div>
                         <button>コメントを送信する</button>
                     </form>
                 </li>
@@ -65,4 +74,35 @@
         </div>
     </div>
 </div>
+<script>
+    document.querySelectorAll('.likes-btn').forEach(button => {
+        button.addEventListener('click', function(e) {
+            e.preventDefault();
+
+            const itemId = this.getAttribute('data-item-id');
+            
+            fetch(`/item/${itemId}/like`, { 
+                method: 'post',
+                headers: {
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                
+                if (data.status === 'liked') {
+                    this.innerHTML = `<img src="{{ asset('images/ハートロゴ_ピンク.png') }}" alt="いいね数">`;
+                } else {
+                    this.innerHTML = `<img src="{{ asset('images/ハートロゴ_デフォルト.png') }}" alt="いいね数">`;
+                }
+                
+                const countElement = document.querySelector('.likes-counts');
+                if (countElement) {
+                    countElement.textContent = data.count;
+                }
+            });
+        });
+    });
+</script>
 @endsection

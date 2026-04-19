@@ -34,16 +34,20 @@
                     <label for="password">パスワード</label>
                     <input type="text" id="password" name="password" value="{{ old('password') }}"/>
                 </li>
-                 @error('password')
+                <div class="form__error">
+                    @error('password')
                     {{ $message }}
                     @enderror
+                </div>
                 <li class="form__group-item">
                     <label for="password_confirmation">確認用パスワード</label>
                     <input type="text" id="password_confirmation" name="password_confirmation" value="{{ old('password') }}"/>
                 </li>
-                 @error('password_confirmation')
+                 <div class="form__error">
+                    @error('password_confirmation')
                     {{ $message }}
                     @enderror
+                </div>
                 <li class="form__group-item">
                     <button class="form__button-submit">登録</button>
                 </li>
@@ -53,14 +57,5 @@
     <div class="transition-login">
         <a href="/login" class="to-login">ログインはこちら</a>
     </div>
-    @if ($errors->any())
-    　<div style="color: red; border: 1px solid red; padding: 10px;">
-        　<ul>
-           　 @foreach ($errors->all() as $error)
-              　  <li>{{ $error }}</li>
-           　 @endforeach
-        　</ul>
-    　</div>
-　　　@endif
 </div>
 @endsection

@@ -34,9 +34,11 @@
                     <label for="purchase_building">建物名</label>
                     <input type="text" id="purchase_building" name="purchase_building" value="{{ $item->purchase_building }}"/>
                 </li>
-                 @error('purchase_building')
+                <div class="form__error">
+                    @error('purchase_building')
                     {{ $message }}
                     @enderror
+                </div>
                 <li class="form__group-item">
                     <button class="form__button-submit">更新する</button>
                 </li>

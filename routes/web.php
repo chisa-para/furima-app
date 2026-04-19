@@ -15,6 +15,7 @@ Route::middleware('auth')->group(function (){
     Route::get('/purchase/address/{item_id}/update',[PurchaseController::class, 'store']);
     Route::patch('/purchase/address/{item_id}/update',[PurchaseController::class, 'store']);
     Route::get('/sell',[ItemController::class, 'exhibit']);
+    Route::post('/item/{item_id}/like',[ItemController::class, 'toggleLike']);
     Route::post('/items',[ItemController::class, 'store']);
     Route::post('/item/{item_id}/comment',[ItemController::class, 'post']);
 });
@@ -22,3 +23,5 @@ Route::middleware('auth')->group(function (){
 Route::get('/',[ItemController::class, 'index']);
 
 Route::get('/item/{item_id}',[ItemController::class, 'show']);
+
+Route::get('/search',[ItemController::class, 'search']);
