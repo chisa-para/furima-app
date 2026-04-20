@@ -18,12 +18,15 @@
                     <p class="item-detail__brand">{{ $item->brand_name }}</p>
                     <p class="item-detail__price">¥{{ $item->item_price }}<span>（税込）</span></p>
                     <div class="item-detail__icons">
-                        <button class="likes-btn" data-item-id="{{ $item->id }}">
-                            @if($item->is_liked)<img src="{{ asset('images/ハートロゴ_ピンク.png') }}"alt="いいね数">
-                            @else<img src="{{ asset('images/ハートロゴ_デフォルト.png') }}"alt="いいね数">
+                        <button id="like-button" data-item-id="{{ $item->id }}" style="border: none; background: none; cursor: pointer;">
+                            @if($item->isLikedBy(Auth::user())) {{-- モデルに判定メソッドを作っておくと楽です --}}
+                            <img src="{{ asset('images/ハートロゴ_ピンク.png') }}" id="heart-icon" width="30">
+                            @else
+                            <img src="{{ asset('images/ハートロゴ_デフォルト.png') }}" id="heart-icon" width="30">
                             @endif
                         </button>
-                        <span class="likes-counts">{{ $item->likes->count() }}</span>
+                        <span id="like-count">{{ $item->likes()->count() }}</span>
+                        <meta name="csrf-token" content="{{ csrf_token() }}">
                         <img src="{{ asset('images/ふきだしロゴ.png') }}" alt="コメント数">
                         <p class="comments">{{ $item->comments->count() }}</p>
                     </div>
@@ -75,34 +78,31 @@
     </div>
 </div>
 <script>
-    document.querySelectorAll('.likes-btn').forEach(button => {
-        button.addEventListener('click', function(e) {
-            e.preventDefault();
+    document.getElementById('like-button').addEventListener('click', function() {
+    const itemId = this.dataset.itemId;
+    const heartIcon = document.getElementById('heart-icon');
+    const likeCount = document.getElementById('like-count');
 
-            const itemId = this.getAttribute('data-item-id');
-            
-            fetch(`/item/${itemId}/like`, { 
-                method: 'post',
-                headers: {
-                    'X-CSRF-TOKEN': '{{ csrf_token() }}',
-                    'Content-Type': 'application/json'
-                }
-            })
-            .then(response => response.json())
-            .then(data => {
-                
-                if (data.status === 'liked') {
-                    this.innerHTML = `<img src="{{ asset('images/ハートロゴ_ピンク.png') }}" alt="いいね数">`;
-                } else {
-                    this.innerHTML = `<img src="{{ asset('images/ハートロゴ_デフォルト.png') }}" alt="いいね数">`;
-                }
-                
-                const countElement = document.querySelector('.likes-counts');
-                if (countElement) {
-                    countElement.textContent = data.count;
-                }
-            });
-        });
-    });
+    fetch(`/items/${itemId}/like`, {
+        method: 'POST',
+        headers: {
+            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content,
+            'Content-Type': 'application/json',
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+        // 1. カウントを更新
+        likeCount.innerText = data.likesCount;
+
+        // 2. ハートの画像を切り替える
+        if (data.isLiked) {
+            heartIcon.src = "/images/ハートロゴ_ピンク.png"; // いいね済みの画像パス
+        } else {
+            heartIcon.src = "/images/ハートロゴ_デフォルト.png"; // 未いいねの画像パス
+        }
+    })
+    .catch(error => console.error('Error:', error));
+});
 </script>
 @endsection

@@ -34,33 +34,6 @@ class ItemController extends Controller
         return view('item_detail', compact('item'));
     }
 
-    public function toggleLike($id)
-    {
-        $user = Auth::user();
-        $item = Item::findOrFail($id);
-
-    // ユーザーがこの商品をいいねしているかチェック
-    // likes()リレーションがある前提です
-    $like = Like::where('like_item_id', $item_id)->where('user_id', $user->id)->first();
-
-    if ($like) {
-        $like->delete();
-        $status = 'unliked';
-    } else {
-        Like::create([
-            'user_id' => $user->id,
-            'like_item_id' => $item_id, // ここを正しいカラム名に合わせる
-        ]);
-        $status = 'liked';
-    }
-
-    $newCount = Like::where('like_item_id', $item_id)->count();
-
-    return response()->json([
-        'status' => $status,
-        'count' => $newCount // 最新の数を数える
-    ]);
-}
 
     public function exhibit()
     {

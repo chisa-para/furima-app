@@ -39,9 +39,15 @@ class Item extends Model
     return $this->belongsTo(Condition::class);
     }
 
-    public function likes(){
-    return $this->hasMany(Like::class,'like_item_id');
-    }
+    public function likes()
+{
+    return $this->belongsToMany(
+        User::class,
+        'likes',     
+        'like_item_id',
+        'like_user_id'  
+    )->withTimestamps();
+}
 
     public function comments(){
     return $this->hasMany(Comment::class);
@@ -55,5 +61,9 @@ class Item extends Model
             
         return $query;
     }
+
+    public function isLikedBy($user): bool {
+    return $user ? $this->likes()->where('like_user_id', $user->id)->exists() : false;
+}
 }
 

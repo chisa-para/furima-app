@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PurchaseController;
+use App\Http\Controllers\LikeController;
 
 Route::middleware('auth')->group(function (){
     Route::post('/mypage/profile/update',[ProfileController::class, 'store']);
@@ -14,9 +15,9 @@ Route::middleware('auth')->group(function (){
     Route::post('/purchase/address/{item_id}/update',[PurchaseController::class, 'confirm']);
     Route::post('/purchase/{item_id}/buy',[PurchaseController::class, 'store']);
     Route::get('/sell',[ItemController::class, 'exhibit']);
-    Route::post('/item/{item_id}/like',[ItemController::class, 'toggleLike']);
     Route::post('/items',[ItemController::class, 'store']);
     Route::post('/item/{item_id}/comment',[ItemController::class, 'post']);
+    Route::post('/items/{item_id}/like', [LikeController::class, 'toggleLike']);
 });
 
 Route::get('/',[ItemController::class, 'index']);
