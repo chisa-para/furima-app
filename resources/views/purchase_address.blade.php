@@ -9,12 +9,12 @@
         <h2>住所変更</h2>
     </div>
     <div class="form__group">
-        <form action="/purchase/address/{{ $item->id }}/update" class="form" method="" novalidate>
+        <form action="/purchase/address/{{ $item->id }}/update" class="form" method="post">
             @csrf
             <ul class="form__group-ul">
                 <li class="form__group-item">
                     <label for="purchase_post_code">郵便番号</label>
-                    <input type="text" id="purchase_post_code" name="purchase_post_code" value="{{ $item->purchase_post_code }}"/>
+                    <input type="text" id="purchase_post_code" name="purchase_post_code" value="{{ $profile->post_code }}"/>
                 </li>
                 <div class="form__error">
                    @error('purchase_post_code')
@@ -23,7 +23,7 @@
                 </div>
                 <li class="form__group-item">
                     <label for="purchase_address">住所</label>
-                    <input type="text" id="purchase_address" name="purchase_address" value="{{ $item->purchase_address }}"/>
+                    <input type="text" id="purchase_address" name="purchase_address" value="{{ $profile->address }}"/>
                 </li>
                 <div class="form__error">
                     @error('purchase_address')
@@ -32,7 +32,7 @@
                 </div>
                 <li class="form__group-item">
                     <label for="purchase_building">建物名</label>
-                    <input type="text" id="purchase_building" name="purchase_building" value="{{ $item->purchase_building }}"/>
+                    <input type="text" id="purchase_building" name="purchase_building" value="{{ $profile->building }}"/>
                 </li>
                 <div class="form__error">
                     @error('purchase_building')

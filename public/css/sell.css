@@ -17,3 +17,8 @@
     background-color: rgb(255, 59, 59);
     color: white;
 }
+
+.form__error {
+    color: red;
+    font-size: 13px;
+}

@@ -12,7 +12,7 @@ class PurchaseRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,16 +23,18 @@ class PurchaseRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'comment_detail' => ['required', 'max:255'],
+            'payment_method' => ['required'],
+            'purchase_post_code' => ['required'],
+            'purchase_address' => ['required'],
         ];
     }
 
     public function messages()
     {
         return[
-            'purchase_post_code.required' => '郵便番号を入力してください',
-            'purchase_post_code.size' => '郵便番号はハイフンを入れて8文字で入力してください',
-            'purchase_address.required' => '住所を入力してください',
+            'payment_method.required' => '支払方法を入力してください',
+            'purchase_post_code.required' => '配送先の郵便番号を入力してください',
+            'purchase_address.required' => '配送先の住所を入力してください',
         ];
     }
 }

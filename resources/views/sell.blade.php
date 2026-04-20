@@ -17,7 +17,7 @@
                     <input type="file" name="item_image" value="画像を選択">
                 </li>
                 <div class="form__error">
-                   @error('purchase_post_code')
+                   @error('item_image')
                     {{ $message }}
                     @enderror
                 </div>
@@ -32,20 +32,21 @@
                             @endforeach
                         </li>
                         <div class="form__error">
-                            @error('detail__category')
+                            @error('category_id')
                             {{ $message }}
                             @enderror
                         </div>
                         <li class="detail__condition">
-                            商品の詳細
+                            商品の状態
                             <select name="condition_id" id="">
+                                <option value="" disabled selected>選択してください</option>
                                 @foreach($conditions as $condition)
                                 <option value="{{ $condition->id }}">{{ $condition->condition_content }}</option>
                                 @endforeach
                             </select>
                         </li>
                         <div class="form__error">
-                            @error('detail__condition')
+                            @error('condition_id')
                             {{ $message }}
                             @enderror
                         </div>
@@ -60,7 +61,7 @@
                             <input type="text" name="item_name" class="item_name">
                         </li>
                         <div class="form__error">
-                            @error('')
+                            @error('item_name')
                             {{ $message }}
                             @enderror
                         </div>
@@ -69,18 +70,13 @@
                             </label>
                             <input type="text" name="brand_name"  class="item_brand">
                         </li>
-                        <div class="form__error">
-                            @error('')
-                            {{ $message }}
-                            @enderror
-                        </div>
                         <li class="intro__detail">
                             <label for="item_detail">商品の説明
                             </label>
                             <input type="text" name="item_detail" class="item_detail">
                         </li>
                         <div class="form__error">
-                            @error('')
+                            @error('item_detail')
                             {{ $message }}
                             @enderror
                         </div>
@@ -90,7 +86,7 @@
                             <input type="text" name="item_price" class="item_price">
                         </li>
                         <div class="form__error">
-                            @error('')
+                            @error('item_price')
                             {{ $message }}
                             @enderror
                         </div>

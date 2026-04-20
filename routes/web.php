@@ -11,8 +11,8 @@ Route::middleware('auth')->group(function (){
     Route::get('/mypage/profile',[ProfileController::class, 'show']);
     Route::get('/purchase/{item_id}',[PurchaseController::class, 'index']);
     Route::get('/purchase/address/{item_id}',[PurchaseController::class, 'show']);
-    Route::get('/purchase/address/{item_id}/update',[PurchaseController::class, 'store']);
-    Route::patch('/purchase/address/{item_id}/update',[PurchaseController::class, 'store']);
+    Route::post('/purchase/address/{item_id}/update',[PurchaseController::class, 'confirm']);
+    Route::post('/purchase/{item_id}/buy',[PurchaseController::class, 'store']);
     Route::get('/sell',[ItemController::class, 'exhibit']);
     Route::post('/item/{item_id}/like',[ItemController::class, 'toggleLike']);
     Route::post('/items',[ItemController::class, 'store']);

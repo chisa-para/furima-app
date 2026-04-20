@@ -12,6 +12,7 @@ use App\Models\Like;
 use App\Models\Category;
 use App\Models\Condition;
 use App\Http\Requests\CommentRequest;
+use App\Http\Requests\ExhibitionRequest;
 
 class ItemController extends Controller
 {
@@ -68,7 +69,7 @@ class ItemController extends Controller
         return view('sell', compact('categories', 'conditions'));
     }
 
-    public function store(Request $request)
+    public function store(ExhibitionRequest $request)
     {
         $user = Auth::user();
 
@@ -87,7 +88,7 @@ class ItemController extends Controller
             'item_price' => $request->item_price,
             'seller_id' => $user->id,
         ]);
-        return redirect('/')->with('successMessage','商品を出品しました');
+        return redirect("/")->with('successMessage','商品を出品しました');
     }
 
     public function post($id, CommentRequest $request)

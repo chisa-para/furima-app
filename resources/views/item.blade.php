@@ -20,6 +20,9 @@
                 <a href="/item/{{ $item->id }}" class="items-detail-link">
                     <img src="{{ asset('storage/' . $item->item_image) }}" width="200" height="200" alt="商品画像">
                     <p class="item-">{{ $item->item_name }}</p>
+                    @if($item->buyer_id)
+                    <p class="item-status">SOLD</p>
+                    @endif
                 </a>
             </li>
             @endforeach
