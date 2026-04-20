@@ -9,11 +9,10 @@
         @if(empty($profile->profile_image))
         <div class="user-img">ユーザー画像</div>
         @else
-        <img class="main__item-img" src="{{ asset('storage/images/' . $profile->profile_image) }}" width="200" height="200" alt="ユーザー画像">
+        <img class="main__item-img" src="{{ asset('storage/' . $profile->profile_image) }}" width="200" height="200" alt="ユーザー画像">
         @endif
         <p class="user-name">{{ $user->user_name }}</p>
         <a class="profile-edit" href="/mypage/profile" class="profile-edit">プロフィールを編集</a>
-        <edit></edit>
     </div>
     <div class="main__navi">
         <div class="main__navi-list">

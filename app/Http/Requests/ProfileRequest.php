@@ -23,7 +23,7 @@ class ProfileRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'profile_image' => ['mimes:jpeg,png'],
+            'profile_image' => ['image','mimes:jpeg,png'],
             'user_name' => ['required', 'max:20'],
             'post_code' => ['required', 'size:8'],
             'address' => ['required'],
@@ -33,6 +33,7 @@ class ProfileRequest extends FormRequest
     public function messages()
     {
         return[
+            'profile_image.image' => '画像形式のものをアップロードしてください',
             'profile_image.mimes' => '画像は拡張子がjpegもしくはpngのものを登録してください',
             'user_name.required' => 'お名前を入力してください',
             'user_name.max' => 'お名前は20文字以内で入力してください',

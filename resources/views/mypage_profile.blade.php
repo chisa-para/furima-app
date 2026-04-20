@@ -16,25 +16,19 @@
         <h2>プロフィール設定</h2>
     </div>
     <div class="form__group">
-        <form action="/mypage/profile/update" class="form" method="" novalidateenctype="multipart/form-data">
+        <form action="/mypage/profile/update" class="form" method="post" enctype="multipart/form-data">
             @csrf
             <ul class="form__group-ul">
                 <li class="form__group-item">
                     <div class="form__user-img">
-                        @if(isset($filename))
-                        <img src="{{ asset() }}" style="max-width: 300px;">
+                        @if(empty($profile->profile_image))
+                        <div class="user-img">ユーザー画像</div>
                         @else
-                        <div style="max-width: 300px;"></div>
+                        <img class="main__item-img" src="{{ asset('storage/' . $profile->profile_image) }}" width="200" height="200" alt="ユーザー画像">
                         @endif
                     </div>
-                    <img src="" alt="">
-                    <input type="file" name="user_image" value="画像を選択">
+                    <input type="file" name="profile_image" value="画像を選択">
                 </li>
-                <div class="form__error">
-                    @error('profile_image')
-                    {{ $message }}
-                    @enderror
-                </div>
                 <li class="form__group-item">
                     <label for="user_name">ユーザー名</label>
                     <input type="text" id="user_name" name="user_name" value="{{ $user->user_name }}"/>

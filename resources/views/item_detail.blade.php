@@ -8,7 +8,7 @@
     <div class="content__inner">
         <div class="item-detail__img">
             <div class="detail__img">
-                <img src="{{ asset('storage/images/' . $item->item_image) }}" width="300" height="300" alt="商品画像">
+                <img src="{{ asset('storage/items/' . $item->item_image) }}" width="300" height="300" alt="商品画像">
             </div>
         </div>
         <div class="item-detail__content">

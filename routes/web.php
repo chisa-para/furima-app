@@ -6,10 +6,9 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PurchaseController;
 
 Route::middleware('auth')->group(function (){
+    Route::post('/mypage/profile/update',[ProfileController::class, 'store']);
     Route::get('/mypage',[ProfileController::class, 'index'])->name('mypage');
-    Route::get('/mypage/profile',[ProfileController::class, 'edit']);
-    Route::get('/mypage/profile/update',[ProfileController::class, 'update']);
-    Route::patch('/mypage/profile/update',[ProfileController::class, 'update']);
+    Route::get('/mypage/profile',[ProfileController::class, 'show']);
     Route::get('/purchase/{item_id}',[PurchaseController::class, 'index']);
     Route::get('/purchase/address/{item_id}',[PurchaseController::class, 'show']);
     Route::get('/purchase/address/{item_id}/update',[PurchaseController::class, 'store']);
