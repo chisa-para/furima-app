@@ -26,7 +26,7 @@
         <ul class="main__items-ul">
             @foreach($items as $item)
             <li class="main__item-card">
-                <img class="main__item-img" src="{{ asset('storage/images/' . $item->item_image) }}" width="200" height="200" alt="商品画像">
+                <img class="main__item-img" src="{{ asset('storage/' . $item->item_image) }}" width="200" height="200" alt="商品画像">
                 <p class="main__item-name">{{ $item->item_name }}</p>
         </li>
         @endforeach

@@ -72,11 +72,13 @@ class ItemController extends Controller
     {
         $user = Auth::user();
 
-        exit('ここに来ました');
+        $path = null;
+        if ($request->hasFile('item_image')) {
+            $path = $request->file('item_image')->store('items', 'public');
+        }
 
-        $item = $request;
         Item::create([
-            'item_image' => $request->item_image,
+            'item_image' => $path,
             'category_id' => $request->category_id,
             'condition_id' => $request->condition_id,
             'item_name' => $request->item_name,

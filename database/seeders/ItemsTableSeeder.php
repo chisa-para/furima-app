@@ -16,7 +16,7 @@ class ItemsTableSeeder extends Seeder
     {
         $items = [
             [
-            'item_image' => 'clock.jpg',
+            'item_image' => 'items/clock.jpg',
             'item_name' => '腕時計',
             'brand_name' => 'Rolax',
             'item_price' =>15000,
@@ -31,7 +31,7 @@ class ItemsTableSeeder extends Seeder
             'purchased_at' => null
             ],
             [
-            'item_image' => 'hdd.jpg',
+            'item_image' => 'items/hdd.jpg',
             'item_name' => 'HDD',
             'brand_name' => '西芝',
             'item_price' =>5000,
@@ -46,7 +46,7 @@ class ItemsTableSeeder extends Seeder
             'purchased_at' => null
             ],
             [
-            'item_image' => 'onions.jpg',
+            'item_image' => 'items/onions.jpg',
             'item_name' => '玉ねぎ3束',
             'brand_name' => 'なし',
             'item_price' =>300,
@@ -61,7 +61,7 @@ class ItemsTableSeeder extends Seeder
             'purchased_at' => null
             ],
             [
-            'item_image' => 'shoes.jpg',
+            'item_image' => 'items/shoes.jpg',
             'item_name' => '革靴',
             'brand_name' => null,
             'item_price' =>4000,
@@ -76,7 +76,7 @@ class ItemsTableSeeder extends Seeder
             'purchased_at' => null
             ],
             [
-            'item_image' => 'laptop.jpg',
+            'item_image' => 'items/laptop.jpg',
             'item_name' => 'ノートPC',
             'brand_name' => null,
             'item_price' =>45000,
@@ -91,7 +91,7 @@ class ItemsTableSeeder extends Seeder
             'purchased_at' => null
             ],
             [
-            'item_image' => 'mic.jpg',
+            'item_image' => 'items/mic.jpg',
             'item_name' => 'マイク',
             'brand_name' => 'なし',
             'item_price' =>8000,
@@ -106,7 +106,7 @@ class ItemsTableSeeder extends Seeder
             'purchased_at' => null
             ],
             [
-            'item_image' => 'bag.jpg',
+            'item_image' => 'items/bag.jpg',
             'item_name' => 'ショルダーバッグ',
             'brand_name' => null,
             'item_price' =>3500,
@@ -121,7 +121,7 @@ class ItemsTableSeeder extends Seeder
             'purchased_at' => null
             ],
             [
-            'item_image' => 'tumbler.jpg',
+            'item_image' => 'items/tumbler.jpg',
             'item_name' => 'タンブラー',
             'brand_name' => 'なし',
             'item_price' =>500,
@@ -136,7 +136,7 @@ class ItemsTableSeeder extends Seeder
             'purchased_at' => null
             ],
             [
-            'item_image' => 'grinder.jpg',
+            'item_image' => 'items/grinder.jpg',
             'item_name' => 'コーヒーミル',
             'brand_name' => 'Starbacks',
             'item_price' =>4000,
@@ -151,7 +151,7 @@ class ItemsTableSeeder extends Seeder
             'purchased_at' => null
             ],
             [
-            'item_image' => 'cosmetics.jpg',
+            'item_image' => 'items/cosmetics.jpg',
             'item_name' => 'メイクセット',
             'brand_name' => null,
             'item_price' =>2500,

@@ -9,7 +9,7 @@
         <h2>商品の出品</h2>
     </div>
     <div class="sell-form__group">
-        <form action="/items" class="sell-form" method="post" novalidate>
+        <form action="/items" class="sell-form" method="post" enctype="multipart/form-data">
             @csrf
             <ul class="sell-item-info__ul">
                 <li class="sell-item-info__img">

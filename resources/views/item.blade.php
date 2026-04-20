@@ -18,7 +18,7 @@
             @foreach($items as $item)
             <li class="item-card">
                 <a href="/item/{{ $item->id }}" class="items-detail-link">
-                    <img src="{{ asset('storage/items/' . $item->item_image) }}" width="200" height="200" alt="商品画像">
+                    <img src="{{ asset('storage/' . $item->item_image) }}" width="200" height="200" alt="商品画像">
                     <p class="item-">{{ $item->item_name }}</p>
                 </a>
             </li>
