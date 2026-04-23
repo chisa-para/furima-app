@@ -14,7 +14,7 @@
             <ul class="sell-item-info__ul">
                 <li class="sell-item-info__img">
                     <label>商品画像</label>
-                    <input type="file" name="item_image" value="画像を選択">
+                    <input type="file" name="item_image" value="">
                 </li>
                 <div class="form__error">
                    @error('item_image')
@@ -58,7 +58,7 @@
                         <li class="intro__detail">
                             <label for="item_name">商品名
                             </label>
-                            <input type="text" name="item_name" class="item_name">
+                            <input type="text" name="item_name" class="item_name" value="{{ old('item_name') }}">
                         </li>
                         <div class="form__error">
                             @error('item_name')
@@ -68,12 +68,12 @@
                         <li class="intro__detail">
                             <label for="item_brand">ブランド名
                             </label>
-                            <input type="text" name="brand_name"  class="item_brand">
+                            <input type="text" name="brand_name"  class="item_brand" value="{{ old('brand_name') }}">
                         </li>
                         <li class="intro__detail">
                             <label for="item_detail">商品の説明
                             </label>
-                            <input type="text" name="item_detail" class="item_detail">
+                            <input type="text" name="item_detail" class="item_detail" value="{{ old('item_detail') }}">
                         </li>
                         <div class="form__error">
                             @error('item_detail')
@@ -83,7 +83,7 @@
                         <li class="intro__detail">
                             <label for="item_price">販売価格
                             </label>
-                            <input type="text" name="item_price" class="item_price">
+                            <input type="text" name="item_price" class="item_price" value="{{ old('item_price') }}">
                         </li>
                         <div class="form__error">
                             @error('item_price')

@@ -16,22 +16,50 @@ use App\Http\Requests\ExhibitionRequest;
 
 class ItemController extends Controller
 {
-    public function index()
-    {
-        if (Auth::check()) {
-        $items = Item::where('seller_id', '!=', Auth::id())->get();
-    } else {
-        $items = Item::all();
-    }
 
-        return view('item', compact('items'));
+    public function index(Request $request)
+    {
+        $user = Auth::user();
+        $page = $request->query('page', 'recommend');
+        $keyword = $request->query('keyword');
+
+        $query = Item::query();
+        
+        if (!empty($keyword)) {
+            $query->keywordsearch($keyword);
+            }
+            
+            if ($page === 'mylist') {
+                if ($user) {
+                    $items = $query->whereHas('likes', function($q) use ($user) {
+                        $q->where('like_user_id', $user->id);
+                    })->get();
+                    
+                } else {
+
+                    $items = collect();
+                }
+            } else {
+                if ($user) {
+                    $items = $query->where('seller_id', '!=', $user->id)->get();
+
+                } else {
+
+                    $items = $query->get();
+                    
+                }
+            }
+
+        return view('item', compact('items', 'page', 'keyword'));
     }
 
     public function show($id)
     {
+        $user = Auth::user();
+        $comment = Comment::with($id);
         $item = Item::with(['likes', 'comments.user.profile'])->findOrFail($id);
         
-        return view('item_detail', compact('item'));
+        return view('item_detail', compact('user','comment','item'));
     }
 
 
@@ -79,7 +107,7 @@ class ItemController extends Controller
 
     public function search(Request $request)
     {
-        $items = Item::select('id','item_name','item_image')->KeywordSearch($request->keyword)->get();
+        $items = Item::select('id','item_name','item_image','buyer_id')->KeywordSearch($request->keyword)->get();
 
         return view('item', compact('items'));
     }

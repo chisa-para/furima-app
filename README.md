@@ -1,58 +1,56 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# test_contact-form
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+```markdown
+# COACHTECHフリマアプリ
 
-## About Laravel
+## 1. 概要
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Laravelを使用した、個人同士での商品の売り買いが可能なフリマアプリです。
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## 2. 環境構築の手順
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Dockerビルド
+1. `git clone git@github.com:chisa-para/furima-app.git`
+2. docker run --rm \
+3. -u "$(id -u):$(id -g)" \
+4. -v "$(pwd):/var/www/html" \
+5. -w /var/www/html \
+6. laravelsail/php83-composer:latest \
+7. composer install --ignore-platform-reqs
+8. ./vendor/bin/sail up -d --build
 
-## Learning Laravel
+Laravel環境構築
+1.`cp .env.example .env`
+　.env内の各項目の値を下記のように変更
+　・DB_HOST=mysql
+　・DB_DATABASE=laravel
+　・DB_USERNAME=sail
+　・DB_PASSWORD=password
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+2. `./vendor/bin/sail php artisan key:generate`
+3. `./vendor/bin/sail php artisan migrate`
+4. `./vendor/bin/sail php artisan db:seed`
 
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## 3. 開発環境
 
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
+・商品一覧画面:http://localhost/
+・ユーザー登録:http://localhost/register
+・ログイン登録:http://localhost/login
+　　シーダー登録ユーザー：山田一郎（メールアドレス＝Yamada@example.com、パスワード＝321Double、出品商品＝腕時計・マイク）
+　　　　　　　　　鈴木花子（メールアドレス＝hanako@example.com、パスワード＝furima875、出品商品＝玉ねぎ・ショルダーバッグ・メイクセット）
+　　　　　　　　　瓜田杉郎（メールアドレス＝uritai@example.com、パスワード＝100items、出品商品＝HDD・革靴・PC・タンブラー・コーヒーミル）
+・phpMyAdmin:http://localhost:8080/
 
-## Agentic Development
 
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
 
-```bash
-composer require laravel/boost --dev
+## 4. 使用技術（実行環境）
 
-php artisan boost:install
+- PHP 8.3
+- Laravel 13.0
+- MySQL 8.4
+- nginx / Laravel Sail
+- Docker / Docker Desktop
+- Composer, npm, Stripe API
 ```
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## 5.ER図

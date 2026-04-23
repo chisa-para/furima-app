@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use App\Models\Profile;
+use App\Models\Like;
 
 #[Fillable(['name', 'email', 'password'])]
 #[Hidden(['password', 'remember_token'])]
@@ -25,9 +26,9 @@ class User extends Authenticatable
      */
 
     protected $fillable = [
-            'user_name', 
-            'email',
-            'password',
+        'user_name', 
+        'email',
+        'password',
     ];
     
     protected function casts(): array
@@ -39,8 +40,18 @@ class User extends Authenticatable
     }
 
     public function profile()
-{
-    return $this->hasOne(Profile::class);
-}
+    {
+        return $this->hasOne(Profile::class);
+    }
+
+    public function likes()
+    {
+        return $this->belongsToMany(
+            Item::class,
+            'likes',   
+            'like_user_id',   
+            'like_item_id',
+        )->withTimestamps();
+    }
 
 }

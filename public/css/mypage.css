@@ -19,6 +19,10 @@
     border-radius: 50%;
 }
 
+.main__user-img {
+    border-radius: 50%;
+}
+
 .main__item-img {
     display: flex;
     justify-content: center;

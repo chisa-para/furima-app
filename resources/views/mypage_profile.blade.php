@@ -29,9 +29,14 @@
                     </div>
                     <input type="file" name="profile_image" value="画像を選択">
                 </li>
+                <div class="form__error">
+                   @error('profile_image')
+                    {{ $message }}
+                    @enderror
+                </div>
                 <li class="form__group-item">
                     <label for="user_name">ユーザー名</label>
-                    <input type="text" id="user_name" name="user_name" value="{{ $user->user_name }}"/>
+                    <input type="text" id="user_name" name="user_name" value="{{ old('user_name', $user->user_name) }}"/>
                 </li>
                 <div class="form__error">
                    @error('user_name')
@@ -40,7 +45,7 @@
                 </div>
                 <li class="form__group-item">
                     <label for="post_code">郵便番号</label>
-                    <input type="text" name="post_code" value="{{ $user->profile->post_code ?? '' }}"/>
+                    <input type="text" name="post_code" value="{{ old('post_code', $user->profile->post_code ?? '') }}"/>
                 </li>
                 <div class="form__error">
                     @error('post_code')
@@ -49,7 +54,7 @@
                 </div>
                 <li class="form__group-item">
                     <label for="address">住所</label>
-                    <input type="text" name="address" value="{{ $user->profile->address ?? '' }}"/>
+                    <input type="text" name="address" value="{{ old('address', $user->profile->address ?? '') }}"/>
                 </li>
                 <div class="form__error">
                     @error('address')
@@ -58,7 +63,7 @@
                 </div>
                 <li class="form__group-item">
                     <label for="building">建物名</label>
-                    <input type="text" name="building" value="{{ $user->profile->building ?? '' }}"/>
+                    <input type="text" name="building" value="{{ old('building', $user->profile->building ?? '') }}"/>
                 </li>
                 <li class="form__group-item">
                     <button class="form__button-submit">更新する</button>

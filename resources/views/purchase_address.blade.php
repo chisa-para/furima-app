@@ -14,7 +14,7 @@
             <ul class="form__group-ul">
                 <li class="form__group-item">
                     <label for="purchase_post_code">郵便番号</label>
-                    <input type="text" id="purchase_post_code" name="purchase_post_code" value="{{ $profile->post_code }}"/>
+                    <input type="text" id="purchase_post_code" name="purchase_post_code" value="{{ old('purchase_post_code', $profile->post_code) }}"/>
                 </li>
                 <div class="form__error">
                    @error('purchase_post_code')
@@ -23,7 +23,7 @@
                 </div>
                 <li class="form__group-item">
                     <label for="purchase_address">住所</label>
-                    <input type="text" id="purchase_address" name="purchase_address" value="{{ $profile->address }}"/>
+                    <input type="text" id="purchase_address" name="purchase_address" value=" {{ old('purchase_address', $profile->address) }}"/>
                 </li>
                 <div class="form__error">
                     @error('purchase_address')
@@ -32,7 +32,7 @@
                 </div>
                 <li class="form__group-item">
                     <label for="purchase_building">建物名</label>
-                    <input type="text" id="purchase_building" name="purchase_building" value="{{ $profile->building }}"/>
+                    <input type="text" id="purchase_building" name="purchase_building" value="{{ old('purchase_building', $profile->building ) }}"/>
                 </li>
                 <div class="form__error">
                     @error('purchase_building')

@@ -20,8 +20,8 @@ Route::middleware('auth')->group(function (){
     Route::post('/items/{item_id}/like', [LikeController::class, 'toggleLike']);
 });
 
-Route::get('/',[ItemController::class, 'index']);
+Route::get('/',[ItemController::class, 'index'])->name('items');
 
-Route::get('/item/search',[ItemController::class, 'search']);
+//Route::get('/item/search',[ItemController::class, 'search']);
 
 Route::get('/item/{item_id}',[ItemController::class, 'show']);
