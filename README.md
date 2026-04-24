@@ -27,6 +27,8 @@ Laravel環境構築
 　・DB_USERNAME=sail
 　・DB_PASSWORD=password
 
+　・MAIL_HOST=mailhog
+
 2. `./vendor/bin/sail php artisan key:generate`
 3. `./vendor/bin/sail php artisan migrate`
 4. `./vendor/bin/sail php artisan db:seed`

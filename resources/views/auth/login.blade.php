@@ -13,8 +13,8 @@
             @csrf
             <ul class="form__group-ul">
                 <li class="form__group-item">
-                    <label for="email">メールアドレス</label>
-                    <input type="text" id="email" name="email" value="{{ old('email') }}"/>
+                    <label class="form__item-label" for="email">メールアドレス</label>
+                    <input class="form__item" type="text" id="email" name="email" value="{{ old('email') }}"/>
                 </li>
                 <div class="form__error">
                     @error('email')
@@ -22,8 +22,8 @@
                     @enderror
                 </div>
                 <li class="form__group-item">
-                    <label for="password">パスワード</label>
-                    <input type="text" id="password" name="password" value="{{ old('password') }}"/>
+                    <label class="form__item-label" for="password">パスワード</label>
+                    <input class="form__item" type="text" id="password" name="password" value="{{ old('password') }}"/>
                 </li>
                 <div class="form__error">
                     @error('password')
