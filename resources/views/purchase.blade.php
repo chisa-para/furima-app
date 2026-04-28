@@ -6,7 +6,7 @@
 @section('content')
 <div class="purchase__content">
     <div class="content__inner">
-        <form action="/purchase/{{ $item->id }}/buy" class="purchase-form" method="post">
+        <form action="/purchase/{{ $item->id }}/checkout" class="purchase-form" method="post">
             <div class="item-detail">
                 <div class="item-detail-info">
                     <div class="item-img">

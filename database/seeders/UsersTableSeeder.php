@@ -22,8 +22,20 @@ class UsersTableSeeder extends Seeder
             User::factory()->create(['user_name' => '瓜田杉郎', 'email' => 'uritai@example.com', 'password' => Hash::make('100items')]),
         ]);
 
-        foreach ($users as $user) {
-            $user->profile()->save(Profile::factory()->make());
+        $imageFiles = [
+            'user1.png',
+            'user2.png',
+            'user3.png',
+        ];
+
+        foreach ($users as $index => $user) {
+            $imagePath = $imageFiles[$index];
+
+            $profile = Profile::factory()->make([
+                'profile_image' => $imagePath,
+            ]);
+            
+            $user->profile()->save($profile);
         }
     }
 }

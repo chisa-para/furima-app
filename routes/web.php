@@ -17,7 +17,14 @@ Route::middleware('auth')->group(function (){
     Route::get('/purchase/{item_id}',[PurchaseController::class, 'index']);
     Route::get('/purchase/address/{item_id}',[PurchaseController::class, 'show']);
     Route::post('/purchase/address/{item_id}/update',[PurchaseController::class, 'confirm']);
-    Route::post('/purchase/{item_id}/buy',[PurchaseController::class, 'store']);
+    // 1. 決済を開始する（購入ボタンの送信先）
+    Route::post('/purchase/{item_id}/checkout', [PurchaseController::class, 'checkout'])->name('checkout');
+
+    // 2. 決済成功時の戻り先
+    Route::get('/checkout/success/{item_id}', [PurchaseController::class, 'success'])->name('checkout-success');
+
+    // 3. 決済キャンセル時の戻り先
+    Route::get('/checkout/cancel/{item_id}', [PurchaseController::class, 'cancel'])->name('checkout-cancel');
     Route::get('/sell',[ItemController::class, 'exhibit']);
     Route::post('/items',[ItemController::class, 'store']);
     Route::post('/item/{item_id}/comment',[ItemController::class, 'post']);

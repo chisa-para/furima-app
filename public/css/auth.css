@@ -95,7 +95,7 @@ main {
 /* verify-email.blade.php対応 */
 .email__resend {
     background-color: rgb(219, 255, 212);
-    color: rgb(61, 235, 27);
+    color: green;
 }
 .mail__text {
     display: flex;
