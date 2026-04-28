@@ -16,7 +16,7 @@
                     <img src="{{ asset('images/COACHTECHヘッダーロゴ.png') }}" alt="COACHTECH" class="logo-image">
                 </a>
             </div>
-            @if(!Request::is('login','register'))
+            @if(!Request::is('login','register','email/verify'))
             <div class="header__search">
                 <form action="{{ route('items') }}" class="search-form" method="get">
                     <input name="keyword" type="text" class="search-input" placeholder="何をお探しですか？">
@@ -25,7 +25,7 @@
             <div class="header__navi">
                 <div class="header__navi-list">
                     <ul class="header__navi-ul">
-                        @auth
+                        @if(Auth::check() && Auth::user()->hasVerifiedEmail())
                         <li class="header__navi-item">
                             <form action="/logout" method="POST">
                                 @csrf
@@ -34,7 +34,7 @@
                         </li>
                         @else
                         <li class="header__navi-item"><a href="/login" class="header__navi--login">ログイン</a></li>
-                        @endauth
+                        @endif
                         <li class="header__navi-item"><a href="/mypage" class="header__navi--mypage">マイページ</a></li>
                         <li class="header__navi-item"><a href="/sell" class="header__navi--sell">出品</a></li>
                     </ul>

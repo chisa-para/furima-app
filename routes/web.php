@@ -45,18 +45,3 @@ Route::post('/email/verification-notification', function (Request $request) {
     $request->user()->sendEmailVerificationNotification();
     return redirect()->route('verification.notice')->with('status', 'verification-link-sent');
 })->middleware(['auth', 'throttle:6,1'])->name('verification.send');
-
-//テスト用
-Route::get('/check-mailhog', function () {
-    // mailhogコンテナに対して接続テストを行う
-    $host = 'mailhog';
-    $port = 1025;
-    $connection = @fsockopen($host, $port, $errno, $errstr, 2);
-
-    if (is_resource($connection)) {
-        fclose($connection);
-        return "成功！MailHog(1025番)との通信路は繋がっています。";
-    } else {
-        return "失敗！MailHogが見つかりません。理由: $errstr ($errno)";
-    }
-});

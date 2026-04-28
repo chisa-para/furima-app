@@ -47,16 +47,14 @@ class PurchaseController extends Controller
     $user = Auth::user();
     $item = Item::findOrFail($id);
 
-    // 支払い方法と、hiddenで送られてきた住所をまとめて更新
     $item->update([
         'purchase_post_code' => $request->purchase_post_code,
         'purchase_address'   => $request->purchase_address,
         'purchase_building'  => $request->purchase_building,
-        'payment_method'     => $request->payment_method, // 支払い方法
+        'payment_method'     => $request->payment_method,
         'buyer_id'           => $user->id               
     ]);
 
-    // 使い終わったセッションを消す
     session()->forget('address_updates');
 
     return redirect('/')->with('successMessage', '購入が完了しました');

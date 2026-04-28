@@ -12,13 +12,14 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\Models\Profile;
 use App\Models\Like;
+use Laravel\Cashier\Billable;
 
 #[Fillable(['name', 'email', 'password'])]
 #[Hidden(['password', 'remember_token'])]
 class User extends Authenticatable implements MustVerifyEmail
 {
     /** @use HasFactory<UserFactory> */
-    use HasFactory, Notifiable;
+    use HasFactory, Notifiable, Billable;
 
     /**
      * Get the attributes that should be cast.
