@@ -47,7 +47,9 @@
                     <ul class="add-info">
                         <li class="add-info__li">
                             <p class="add-info__ttl">カテゴリー</p>
-                            <p class="add-info__category">{{ $item->category->category_content }}</p>
+                            <p class="add-info__category">
+                                {{ $item->category->category_content }}
+                            </p>
                         </li>
                         <li class="add-info__li">
                             <p class="add-info__ttl">商品の状態</p>

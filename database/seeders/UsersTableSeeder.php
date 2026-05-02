@@ -23,9 +23,9 @@ class UsersTableSeeder extends Seeder
         ]);
 
         $imageFiles = [
-            'user1.png',
-            'user2.png',
-            'user3.png',
+            'images/user1.png',
+            'images/user2.png',
+            'images/user3.png',
         ];
 
         foreach ($users as $index => $user) {

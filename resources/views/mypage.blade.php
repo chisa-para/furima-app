@@ -7,7 +7,7 @@
 <div class="contact-form__content">
     <div class="main__user-info">
         @if(empty($profile->profile_image))
-        <div class="user-img">ユーザー画像</div>
+        <div class="user-img__null">ユーザー画像</div>
         @else
         <img class="main__user-img" src="{{ asset('storage/' . $profile->profile_image) }}" width="200" height="200" alt="ユーザー画像">
         @endif

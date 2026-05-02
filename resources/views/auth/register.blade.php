@@ -32,7 +32,7 @@
                 </div>
                 <li class="form__group-item">
                     <label class="form__item-label" for="password">パスワード</label>
-                    <input class="form__item" type="text" id="password" name="password" value="{{ old('password') }}"/>
+                    <input class="form__item" type="password" id="password" name="password" value="{{ old('password') }}"/>
                 </li>
                 <div class="form__error">
                     @error('password')
@@ -49,7 +49,9 @@
                     @enderror
                 </div>
                 <li class="form__group-item">
-                    <button class="form__button-submit">登録</button>
+                    <div class="form__group-item-button">
+                        <button class="form__button-submit">登録</button>
+                    </div>
                 </li>
             </ul>
         </form>

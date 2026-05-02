@@ -5,15 +5,8 @@
 
 @section('content')
 <div class="profile-form__content">
-    <div class="todo__alert">
-        @if(session('successMessage'))
-        <div class="todo__alert--success">
-            {{session('successMessage')}}
-        </div>
-        @endif
-    </div>
     <div class="profile-form__heading">
-        <h2>プロフィール設定</h2>
+        <h2 class="heading">プロフィール設定</h2>
     </div>
     <div class="form__group">
         <form action="/mypage/profile/update" class="form" method="post" enctype="multipart/form-data">
@@ -22,12 +15,13 @@
                 <li class="form__group-item">
                     <div class="form__user-img">
                         @if(empty($profile->profile_image))
-                        <div class="user-img">ユーザー画像</div>
+                        <div class="user-img__null">ユーザー画像</div>
                         @else
-                        <img class="main__item-img" src="{{ asset('storage/' . $profile->profile_image) }}" width="200" height="200" alt="ユーザー画像">
+                        <img class="user-img" src="{{ asset('storage/' . $profile->profile_image) }}" width="200" height="200" alt="ユーザー画像">
                         @endif
+                        <label for="file-upload" class="img-input">画像を選択する</label>
+                        <input type="file" id="file-upload" name="profile_image" style="display:none;" />
                     </div>
-                    <input type="file" name="profile_image" value="画像を選択">
                 </li>
                 <div class="form__error">
                    @error('profile_image')
@@ -35,8 +29,8 @@
                     @enderror
                 </div>
                 <li class="form__group-item">
-                    <label for="user_name">ユーザー名</label>
-                    <input type="text" id="user_name" name="user_name" value="{{ old('user_name', $user->user_name) }}"/>
+                    <label for="user_name" class="form__profile-label">ユーザー名</label>
+                    <input type="text" id="user_name" name="user_name" class="form__profile-input" value="{{ old('user_name', $user->user_name) }}"/>
                 </li>
                 <div class="form__error">
                    @error('user_name')
@@ -44,8 +38,8 @@
                     @enderror
                 </div>
                 <li class="form__group-item">
-                    <label for="post_code">郵便番号</label>
-                    <input type="text" name="post_code" value="{{ old('post_code', $user->profile->post_code ?? '') }}"/>
+                    <label for="post_code" class="form__profile-label">郵便番号</label>
+                    <input type="text" name="post_code" class="form__profile-input" value="{{ old('post_code', $user->profile->post_code ?? '') }}"/>
                 </li>
                 <div class="form__error">
                     @error('post_code')
@@ -53,8 +47,8 @@
                     @enderror
                 </div>
                 <li class="form__group-item">
-                    <label for="address">住所</label>
-                    <input type="text" name="address" value="{{ old('address', $user->profile->address ?? '') }}"/>
+                    <label for="address" class="form__profile-label">住所</label>
+                    <input type="text" name="address" class="form__profile-input" value="{{ old('address', $user->profile->address ?? '') }}"/>
                 </li>
                 <div class="form__error">
                     @error('address')
@@ -62,11 +56,13 @@
                     @enderror
                 </div>
                 <li class="form__group-item">
-                    <label for="building">建物名</label>
-                    <input type="text" name="building" value="{{ old('building', $user->profile->building ?? '') }}"/>
+                    <label for="building" class="form__profile-label">建物名</label>
+                    <input type="text" name="building" class="form__profile-input" value="{{ old('building', $user->profile->building ?? '') }}"/>
                 </li>
                 <li class="form__group-item">
-                    <button class="form__button-submit">更新する</button>
+                    <div class="form__group-item-button">
+                        <button class="form__button-submit">更新する</button>
+                    </div>
                 </li>
             </ul>
         </form>

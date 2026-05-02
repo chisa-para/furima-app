@@ -1,3 +1,79 @@
+main {
+    width: 100%;
+    height: 100vh;
+    max-width: 1540px;
+    margin: 0 auto;
+}
+
+.sell-form__content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.sell-form__group {
+    width: 50%;
+}
+
+.sell-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.form__group-ul {
+    list-style: none;
+    margin: 0 0;
+}
+
+.img-ttl {
+    font-weight: bold;
+}
+
+.form__item-img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px;
+    border: dotted 2px rgb(159, 159, 159);
+}
+
+.img-label {
+    text-decoration: none;
+    color: rgb(255, 62, 32);
+    padding: 5px;
+    border: solid 1px rgb(255, 62, 32);
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.heading3 {
+    border-bottom: solid 1px rgb(94, 94, 94);
+    color: rgb(94, 94, 94);
+}
+
+.item-info__detail-ul {
+    list-style: none;
+}
+
+.detail-list {
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+}
+
+.detail__label {
+    width: 100px;
+}
+
+.detail__input {
+    height: 30px;
+}
+
 .category-hidden {
     display: none;
 }
@@ -16,6 +92,26 @@
 .category-hidden:checked + .category-button {
     background-color: rgb(255, 59, 59);
     color: white;
+}
+
+.form__group-item-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.form__button-submit {
+    background-color: rgb(227, 51, 51);
+    width: 100%;
+    padding: 5px;
+    color: white;
+    font-size: 1.0rem;
+    border: none;
+}
+
+.form__button-submit:hover {
+    background-color: rgb(202, 116, 116);
 }
 
 .form__error {

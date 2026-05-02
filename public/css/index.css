@@ -261,3 +261,8 @@
     color: white;
     cursor: pointer;
 }
+
+.form__error {
+    color: red;
+    font-size: 13px;
+}
