@@ -47,9 +47,11 @@
                     <ul class="add-info">
                         <li class="add-info__li">
                             <p class="add-info__ttl">カテゴリー</p>
+                            @foreach($item->categories as $category)
                             <p class="add-info__category">
-                                {{ $item->category->category_content }}
+                                {{ $category->category_content }}
                             </p>
+                            @endforeach
                         </li>
                         <li class="add-info__li">
                             <p class="add-info__ttl">商品の状態</p>

@@ -30,7 +30,7 @@
                         <li class="detail__list">
                             カテゴリー
                             @foreach($categories as $category)
-                            <input type="checkbox" id="{{ $category->category_content }}" name="category_id"  value="{{ $category->id }}" class="category-hidden">
+                            <input type="checkbox" id="{{ $category->category_content }}" name="category_id[]"  value="{{ $category->id }}" class="category-hidden">
                             <label for="{{ $category->category_content }}" class="category-button">{{ $category->category_content }}</label>
                             @endforeach
                         </li>
@@ -71,7 +71,7 @@
                         <li class="detail__list">
                             <label for="item_brand" class="detail__label">ブランド名
                             </label>
-                            <input type="text" id="item_brand" class="detail__input" class="item_brand" value="{{ old('brand_name') }}">
+                            <input type="text" id="item_brand" name="brand_name" class="detail__input" class="item_brand" value="{{ old('brand_name') }}">
                         </li>
                         <li class="detail__list">
                             <label for="item_detail" class="detail__label">商品の説明

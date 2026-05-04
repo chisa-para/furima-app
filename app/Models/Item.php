@@ -31,23 +31,22 @@ class Item extends Model
     return $this->belongsTo(User::class);
     }
 
-    public function category(){
-    return $this->belongsTo(Category::class);
+    public function categories(){
+    return $this->belongsToMany(Category::class, 'item_categories');
     }
 
     public function condition(){
     return $this->belongsTo(Condition::class);
     }
 
-    public function likes()
-{
+    public function likes(){
     return $this->belongsToMany(
         User::class,
         'likes',     
         'like_item_id',
         'like_user_id'  
     )->withTimestamps();
-}
+    }
 
     public function comments(){
     return $this->hasMany(Comment::class);

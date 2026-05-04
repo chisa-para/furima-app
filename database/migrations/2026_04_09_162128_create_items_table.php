@@ -19,7 +19,7 @@ return new class extends Migration
             $table->integer('item_price');
             $table->foreignId('seller_id')->constrained('users')->cascadeOnUpdate()->cascadeOnDelete();
             $table->text('item_detail',255);
-            $table->foreignId('category_id')->constrained('categories')->cascadeOnUpdate()->cascadeOnDelete();
+            //$table->foreignId('category_id')->constrained('categories')->cascadeOnUpdate()->cascadeOnDelete();
             $table->foreignId('condition_id')->constrained('conditions')->cascadeOnUpdate()->cascadeOnDelete();
             $table->foreignId('buyer_id')->nullable()->constrained('users')->cascadeOnUpdate()->cascadeOnDelete();
             $table->string('purchase_address')->nullable();

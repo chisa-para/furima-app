@@ -10,6 +10,7 @@ use App\Models\Item;
 use App\Models\Comment;
 use App\Models\Like;
 use App\Models\Category;
+use App\Models\ItemCategory;
 use App\Models\Condition;
 use App\Http\Requests\CommentRequest;
 use App\Http\Requests\ExhibitionRequest;
@@ -79,9 +80,8 @@ class ItemController extends Controller
             $path = $request->file('item_image')->store('items', 'public');
         }
 
-        Item::create([
+        $item = Item::create([
             'item_image' => $path,
-            'category_id' => $request->category_id,
             'condition_id' => $request->condition_id,
             'item_name' => $request->item_name,
             'brand_name' => $request->brand_name,
@@ -89,6 +89,10 @@ class ItemController extends Controller
             'item_price' => $request->item_price,
             'seller_id' => $user->id,
         ]);
+
+        $item->categories()->sync($request->category_id);
+        
+
         return redirect("/")->with('successMessage','商品を出品しました');
     }
 

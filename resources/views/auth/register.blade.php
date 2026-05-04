@@ -41,7 +41,7 @@
                 </div>
                 <li class="form__group-item">
                     <label class="form__item-label" for="password_confirmation">確認用パスワード</label>
-                    <input class="form__item" type="text" id="password_confirmation" name="password_confirmation" value="{{ old('password') }}"/>
+                    <input class="form__item" type="password" id="password_confirmation" name="password_confirmation" value="{{ old('password') }}"/>
                 </li>
                  <div class="form__error">
                     @error('password_confirmation')
