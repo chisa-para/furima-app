@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use App\Models\User;
 use App\Models\Category;
 use App\Models\Condition;
@@ -12,6 +13,8 @@ use App\Models\Comment;
 
 class Item extends Model
 {
+    use HasFactory;
+
     protected $fillable = [
         'item_image',
         'item_name',

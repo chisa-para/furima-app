@@ -74,7 +74,7 @@ Laravel環境構築
 　セキュリティコード：任意の3桁 (American Express カードの場合は4桁)
 　名前：任意の名前（ローマ字）
 
-## 4. 使用技術（実行環境）
+## 6. 使用技術（実行環境）
 
 - PHP 8.3
 - Laravel 13.0
@@ -84,4 +84,5 @@ Laravel環境構築
 - Composer, npm, Stripe API
 ```
 
-## 5.ER図
+## 7.ER図
+![alt text](index.drawio.png)

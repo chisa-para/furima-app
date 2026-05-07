@@ -214,10 +214,16 @@
     height: 60px;
     font-size: 10px;
     border-radius: 50%;
+    object-fit: cover;
 }
 
 .main__item-img {
     border-radius: 50%;
+    object-fit: cover;
+}
+
+.item-img {
+    object-fit: cover;
 }
 
 .user_name {

@@ -11,7 +11,7 @@
                  <li class="purchase-info__li">
                     <div class="item-detail-info">
                          <div class="item-img">
-                            <img src="{{ asset('storage/' . $item->item_image) }}" width="200" height="200" alt="商品画像">
+                            <img class="main_item-img" src="{{ asset('storage/' . $item->item_image) }}" width="200" height="200" alt="商品画像">
                         </div>
                         <div class="item-info">
                             <h2 class="item-name">{{ $item->item_name }}</h2>

@@ -91,9 +91,8 @@ class ItemController extends Controller
         ]);
 
         $item->categories()->sync($request->category_id);
-        
 
-        return redirect("/")->with('successMessage','商品を出品しました');
+        return redirect("/");
     }
 
     public function post($id, CommentRequest $request)

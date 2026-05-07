@@ -21,12 +21,14 @@
 
 .main__user-img {
     border-radius: 50%;
+    object-fit: cover;
 }
 
 .main__item-img {
     display: flex;
     justify-content: center;
     align-items: center;
+    object-fit: cover;
 }
 
 .user-name {
@@ -141,6 +143,7 @@
 
 .user-img {
     border-radius: 50%;
+    object-fit: cover;
 }
 
 .img-input {

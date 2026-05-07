@@ -18,7 +18,7 @@
             @foreach($items as $item)
             <li class="item-card">
                 <a href="/item/{{ $item->id }}" class="items-detail-link">
-                    <img src="{{ asset('storage/' . $item->item_image) }}" width="200" height="200" alt="商品画像">
+                    <img class="item-img" src="{{ asset('storage/' . $item->item_image) }}" width="200" height="200" alt="商品画像">
                     <div class="item-text">
                         <p class="item-name">{{ $item->item_name }}</p>
                         @if($item->buyer_id)
