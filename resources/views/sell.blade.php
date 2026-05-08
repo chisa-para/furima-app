@@ -28,11 +28,13 @@
                     <h3 class="heading3">商品の詳細</h3>
                     <ul class="item-info__detail-ul">
                         <li class="detail__list">
-                            カテゴリー
-                            @foreach($categories as $category)
-                            <input type="checkbox" id="{{ $category->category_content }}" name="category_id[]"  value="{{ $category->id }}" class="category-hidden">
-                            <label for="{{ $category->category_content }}" class="category-button">{{ $category->category_content }}</label>
-                            @endforeach
+                            <p class="list-ttl">カテゴリー</p>
+                            <div class="category-select">
+                                @foreach($categories as $category)
+                                    <input type="checkbox" id="{{ $category->category_content }}" name="category_id[]"  value="{{ $category->id }}" class="category-hidden">
+                                    <label for="{{ $category->category_content }}" class="category-button">{{ $category->category_content }}</label>
+                                @endforeach
+                            </div>
                         </li>
                         <div class="form__error">
                             @error('category_id')
@@ -40,7 +42,8 @@
                             @enderror
                         </div>
                         <li class="detail__list">
-                            商品の状態
+                            <label for="condition_id" class="detail__label">商品の状態
+                            </label>
                             <select name="condition_id" id="" class="detail__input">
                                 <option value="" disabled selected>選択してください</option>
                                 @foreach($conditions as $condition)
@@ -76,7 +79,7 @@
                         <li class="detail__list">
                             <label for="item_detail" class="detail__label">商品の説明
                             </label>
-                            <input type="textarea" id="item_detail" name="item_detail" class="detail__input" rows="10" value="{{ old('item_detail') }}">
+                            <textarea id="item_detail" name="item_detail" class="detail__input--textarea" rows="10" >{{ old('item_detail') }}</textarea>
                         </li>
                         <div class="form__error">
                             @error('item_detail')

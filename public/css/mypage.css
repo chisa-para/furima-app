@@ -8,7 +8,7 @@
     color: inherit;
 }
 
-.user-img__null {
+.main__user-img--null {
     background-color: rgb(211, 211, 211);
     display: flex;
     justify-content: center;
@@ -19,9 +19,24 @@
     border-radius: 50%;
 }
 
-.main__user-img {
+.user-img__block {
+    background-color: rgb(211, 211, 211);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    height: 200px;
     border-radius: 50%;
-    object-fit: cover;
+    
+    
+}
+
+.main__user-img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    border-radius: 50%;
 }
 
 .main__item-img {
@@ -29,6 +44,7 @@
     justify-content: center;
     align-items: center;
     object-fit: cover;
+
 }
 
 .user-name {

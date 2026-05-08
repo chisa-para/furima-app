@@ -15,9 +15,11 @@
                 <li class="form__group-item">
                     <div class="form__user-img">
                         @if(empty($profile->profile_image))
-                        <div class="user-img__null">ユーザー画像</div>
+                        <div class="main__user-img--null">ユーザー画像</div>
                         @else
-                        <img class="user-img" src="{{ asset('storage/' . $profile->profile_image) }}" width="200" height="200" alt="ユーザー画像">
+                        <div class="user-img__block">
+                            <img class="main__user-img" src="{{ asset('storage/' . $profile->profile_image) }}" width="200" height="200" alt="ユーザー画像">
+                        </div>
                         @endif
                         <label for="file-upload" class="img-input">画像を選択する</label>
                         <input type="file" id="file-upload" name="profile_image" style="display:none;" />

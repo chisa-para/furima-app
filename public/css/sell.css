@@ -1,6 +1,5 @@
 main {
     width: 100%;
-    height: 100vh;
     max-width: 1540px;
     margin: 0 auto;
 }
@@ -10,6 +9,7 @@ main {
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    padding: 50px;
 }
 
 .sell-form__group {
@@ -60,10 +60,19 @@ main {
     list-style: none;
 }
 
-.detail-list {
+.detail__list {
     display: flex;
-    flex-direction: column;
     margin: 20px;
+
+}
+
+.list-ttl {
+    white-space: nowrap;
+    margin-right: 30px;
+}
+
+.category-select {
+    flex-wrap: wrap;
 }
 
 .detail__label {
@@ -71,7 +80,12 @@ main {
 }
 
 .detail__input {
+    width: 300px;
     height: 30px;
+}
+
+.detail__input--textarea {
+    width: 300px;
 }
 
 .category-hidden {
