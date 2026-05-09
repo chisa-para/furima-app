@@ -39,7 +39,7 @@ composer install --ignore-platform-reqs
 `./vendor/bin/sail artisan migrate --seed`
 
 ※エラー等でもし途中でやり直したい場合は、下記を実行してください
-`./vendor/bin/sail artisan migrate:fresh --seed``
+`./vendor/bin/sail artisan migrate:fresh --seed`
 
 7. シンボリックリンクの設定
 `./vendor/bin/sail artisan storage:link`
