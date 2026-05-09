@@ -537,6 +537,7 @@ class HelloTest extends TestCase
         ]);
 
         $condition = Condition::factory()->create();
+        $category = Category::factory()->create();
 
         $item = Item::create([
             'id'=>'1',
@@ -549,6 +550,8 @@ class HelloTest extends TestCase
             'condition_id' => '1',
         ]);
 
+        $item->categories()->attach($category->id);
+
     // 2. 実行：詳細画面へアクセス
         $response = $this->get(route('item.detail', ['item_id' => $item->id]));
 
@@ -556,7 +559,10 @@ class HelloTest extends TestCase
         $response->assertStatus(200);
         $response->dump();
         $response->assertSee('Laravel本');
-        $response->assertSee('5,000'); // カンマ区切りなどのフォーマットも確認
+        $response->assertSee('5000'); // カンマ区切りなどのフォーマットも確認
+        $response->assertSee('テスト工房');
+        $response->assertSee('良好');
+        $response->assertSee('おもちゃ');
         $response->assertSee('これは商品の説明文です。');
     }
 

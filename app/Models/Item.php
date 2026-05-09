@@ -65,7 +65,7 @@ class Item extends Model
     }
 
     public function isLikedBy($user): bool {
-    return $user ? $this->likes()->where('like_user_id', $user->id)->exists() : false;
-}
+        return $user ? $this->likes()->where('like_user_id', $user->id)->exists() : false;
+    }
 }
 

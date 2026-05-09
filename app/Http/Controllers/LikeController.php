@@ -15,13 +15,10 @@ class LikeController extends Controller
     $user = Auth::user();
     $item = Item::findOrFail($item_id);
 
-    // すでにいいねしていたら解除、してなければ登録（toggle）
-    // ※Userモデルに likes() リレーション（belongsToMany）がある前提です
     $item->likes()->toggle($user->id);
 
-    // 最新のいいね数を取得
     $likesCount = $item->likes()->count();
-    // 自分がいいねしたかどうかの判定
+    
     $isLiked = $item->likes()->where('like_user_id', $user->id)->exists();
 
     return response()->json([

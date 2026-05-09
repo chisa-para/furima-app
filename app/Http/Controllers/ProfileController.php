@@ -37,23 +37,24 @@ class ProfileController extends Controller
     }
 
     public function store(ProfileRequest $request)
-{
-    $user = Auth::user();
+    {
+        $user = Auth::user();
     
-    $profile = $user->profile ?: new Profile(['user_id' => $user->id]);
+        $profile = $user->profile ?: new Profile(['user_id' => $user->id]);
 
-    $user->user_name = $request->user_name;
-    $profile->post_code = $request->post_code;
-    $profile->address   = $request->address;
-    $profile->building  = $request->building;
+        $user->user_name = $request->user_name;
+        $profile->post_code = $request->post_code;
+        $profile->address   = $request->address;
+        $profile->building  = $request->building;
 
-    if ($request->hasFile('profile_image')) {
-        $path = $request->file('profile_image')->store('images', 'public');
-        $profile->profile_image = $path;
-    }
+        if ($request->hasFile('profile_image')) {
+            $path = $request->file('profile_image')->store('images', 'public');
+            $profile->profile_image = $path;
+        }
 
-    $profile->save();
+        $profile->save();
+        $user->save();
                 
-    return redirect()->route('mypage')->with('successMessage', 'プロフィールを更新しました');
-}
+        return redirect()->route('mypage');
+    }
 }

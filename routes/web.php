@@ -21,6 +21,7 @@ Route::middleware('auth')->group(function (){
     Route::post('/purchase/{item_id}/checkout', [PurchaseController::class, 'checkout'])->name('checkout');
     Route::get('/checkout/success/{item_id}', [PurchaseController::class, 'success'])->name('checkout-success');
     Route::get('/checkout/cancel/{item_id}', [PurchaseController::class, 'cancel'])->name('checkout-cancel');
+
     Route::get('/sell',[ItemController::class, 'exhibit']);
     Route::post('/items',[ItemController::class, 'store']);
     Route::post('/item/{item_id}/comment',[ItemController::class, 'post']);
@@ -34,12 +35,12 @@ Route::get('/item/{item_id}',[ItemController::class, 'show'])->name('item.detail
 
 Route::get('/email/verify', function () {
     return view('auth.verify-email');
-})->middleware('auth')->name('verification.notice');
+    })->middleware('auth')->name('verification.notice');
 Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
     $request->fulfill();
     return redirect('/mypage/profile');
-})->middleware(['auth', 'signed'])->name('verification.verify');
+    })->middleware(['auth', 'signed'])->name('verification.verify');
 Route::post('/email/verification-notification', function (Request $request) {
     $request->user()->sendEmailVerificationNotification();
     return redirect()->route('verification.notice')->with('status', 'verification-link-sent');
-})->middleware(['auth', 'throttle:6,1'])->name('verification.send');
+    })->middleware(['auth', 'throttle:6,1'])->name('verification.send');

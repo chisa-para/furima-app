@@ -43,43 +43,43 @@ class PurchaseController extends Controller
     }
 
     public function checkout($id, PurchaseRequest $request)
-{
-    $item = Item::findOrFail($id);
-    session([
-        'tmp_post_code' => $request->purchase_post_code,
-        'tmp_address' => $request->purchase_address,
-        'tmp_building' => $request->purchase_building,
+    {
+        $item = Item::findOrFail($id);
+        session([
+            'tmp_post_code' => $request->purchase_post_code,
+            'tmp_address' => $request->purchase_address,
+            'tmp_building' => $request->purchase_building,
         ]);
 
         
-    // ログイン中のユーザーをStripeの決済ページへリダイレクト
-    return $request->user()->checkoutCharge($item->item_price, $item->item_name, 1, [
-        'success_url' => route('checkout-success', ['item_id' => $id]),
-        'cancel_url' => route('checkout-cancel', ['item_id' => $id]),
+
+        return $request->user()->checkoutCharge($item->item_price, $item->item_name, 1, [
+            'success_url' => route('checkout-success', ['item_id' => $id]),
+            'cancel_url' => route('checkout-cancel', ['item_id' => $id]),
         
-    ]);
+        ]);
 }
 
     public function success($id, Request $request)
-{
+    {
     
-    $user = Auth::user();
-    $item = Item::findOrFail($id);
+        $user = Auth::user();
+        $item = Item::findOrFail($id);
 
-    $item->update([
-        'purchase_post_code' => session('tmp_post_code'),
-        'purchase_address'   => session('tmp_address'),
-        'purchase_building'  => session('tmp_building'),
-        'buyer_id'           => $user->id               
-    ]);
+        $item->update([
+            'purchase_post_code' => session('tmp_post_code'),
+            'purchase_address'   => session('tmp_address'),
+            'purchase_building'  => session('tmp_building'),
+            'buyer_id'           => $user->id               
+        ]);
 
-    session()->forget(['tmp_post_code', 'tmp_address', 'tmp_building']);
+        session()->forget(['tmp_post_code', 'tmp_address', 'tmp_building']);
 
-    return redirect('/')->with('successMessage', '購入が完了しました');
-}
+        return redirect('/');
+    }
 
-public function cancel($id)
-{
-    return redirect("/purchase/{$id}"); // 「決済がキャンセルされました」画面
-}
+    public function cancel($id)
+    {
+        return redirect("/purchase/{$id}");
+    }
 }

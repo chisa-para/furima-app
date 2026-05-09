@@ -19,7 +19,7 @@
             @if(!Request::is('login','register','email/verify'))
             <div class="header__search">
                 <form action="{{ route('items') }}" class="search-form" method="get">
-                    <input name="keyword" type="text" class="search-input" placeholder="何をお探しですか？">
+                    <input name="keyword" type="text" class="search-input" value="{{ request('keyword') }}" placeholder="何をお探しですか？">
                 </form>
             </div>
             <div class="header__navi">

@@ -38,6 +38,9 @@ composer install --ignore-platform-reqs
 6. マイグレーションとシーディング
 `./vendor/bin/sail artisan migrate --seed`
 
+※エラー等でもし途中でやり直したい場合は、下記を実行してください
+`./vendor/bin/sail artisan migrate:fresh --seed``
+
 7. シンボリックリンクの設定
 `./vendor/bin/sail artisan storage:link`
 
@@ -96,6 +99,8 @@ cp .env.testing.example .env.testing
 
 ※もし .env の変更が反映されない場合や、挙動がおかしい場合は、一度以下のコマンドで設定キャッシュをクリアしてください。
 `./vendor/bin/sail artisan config:clear`
+
+※テストの実装は要件シートのID1～7、16までしか実装できませんでした。
 
 ## 7. 使用技術（実行環境）
 
